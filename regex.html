@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <script>
+    function validateForm() {
+      // Get form inputs
+      var name = document.forms["registrationForm"]["name"].value;
+      var email = document.forms["registrationForm"]["email"].value;
+      var password = document.forms["registrationForm"]["password"].value;
+      var confirmPassword = document.forms["registrationForm"]["confirmPassword"].value;
+      var gender = document.forms["registrationForm"]["gender"].value;
+      var state = document.forms["registrationForm"]["state"].value;
+      
+      // Perform validations
+      if (name === "") {
+        alert("Please enter your name.");
+        return false;
+      }
+      
+      if (email === "") {
+        alert("Please enter your email.");
+        return false;
+      }
+      
+      // Validate email format using a regular expression
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      
+      if (password === "") {
+        alert("Please enter a password.");
+        return false;
+      }
+      
+      // Password must be at least 6 characters long
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+      }
+      
+      if (confirmPassword === "") {
+        alert("Please confirm your password.");
+        return false;
+      }
+      
+      // Check if password and confirm password match
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      
+      if (gender === "") {
+        alert("Please select your gender.");
+        return false;
+      }
+      
+      if (state === "") {
+        alert("Please select your state.");
+        return false;
+      }
+      
+      // If all validations pass, the form is valid
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>Registration Form</h1>
+  
+  <form name="registrationForm" onsubmit="return validateForm()">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br><br>
+    
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" name="confirmPassword" required><br><br>
+    
+    <label for="gender">Gender:</label>
+    <input type="radio" name="gender" value="male" required>Male
+    <input type="radio" name="gender" value="female" required>Female<br><br>
+    
+    <label for="state">State:</label>
+    <select name="state" required>
+      <option>Select State</option>
+      <option>Andhrapradesh</option>
+      <option>telangana</option>
+      <option>karnataka</option>
+    
+    </select><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+
